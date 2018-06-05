@@ -1,4 +1,5 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const routes = require("./server/routes");
 
@@ -7,10 +8,6 @@ app.set("views", __dirname + "/views");
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extened: false}));
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
 app.use("/", routes);
 

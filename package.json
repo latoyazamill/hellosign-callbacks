@@ -2,9 +2,9 @@
   "name": "hellosign-callbacks",
   "version": "1.0.0",
   "description": "This app is for the HelloSign API callbacks with NGROK.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/latoyazamill/hellosign-callbacks#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3"
   }

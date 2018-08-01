@@ -4,7 +4,7 @@
   "description": "This app is for the HelloSign API callbacks with NGROK.",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon src/index.js", 
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:create": "createdb callbacks_development",
     "db:reset": "dropdb callbacks_development && createdb callbacks_development && npm run load_schema",
@@ -25,5 +25,8 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "pg-promise": "^8.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

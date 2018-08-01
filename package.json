@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:create": "createdb callbacks_development"
+    "db:create": "createdb callbacks_development",
+    "db:reset": "dropdb callbacks_development && createdb callbacks_development && npm run load_schema",
+    "load_schema": "psql -d callbacks_development < src/models/db/schema.sql"
   },
   "repository": {
     "type": "git",

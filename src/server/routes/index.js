@@ -5,6 +5,10 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/nonembedded", (req, res) => {
+  res.render("nonembedded");
+});
+
 router.post("/nonembedded", (req, res) => {
   users.create(req.body)//this would be the response info
   .then(user => {

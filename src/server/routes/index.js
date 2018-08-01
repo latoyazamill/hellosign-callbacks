@@ -1,5 +1,10 @@
 const router = require("express").Router()
 const signers = require("../../models/db/signers");
+const config = require('./config.js');
+
+const hellosign = require('hellosign-sdk')({
+  key: config.APIKEY
+});
 
 router.get("/", (req, res) => {
   res.render("index");

@@ -1,6 +1,10 @@
 const router = require("express").Router()
+const multer = require('multer');
+const upload = multer();
+
 const signers = require("../../models/db/signers");
 const config = require("../../../config.js");
+const callbacks = require("../callbacks.js");
 
 const hellosign = require('hellosign-sdk')({
   key: config.APIKEY
@@ -14,7 +18,7 @@ router.get("/nonembedded", (req, res) => {
   res.render("nonembedded");
 });
 
-router.post("/nonembedded", (req, res) => {
+router.post('/nonembedded/response', (req, res) => {
   const options = {
     test_mode: req.body.ufTestMode,
     title: req.body.ufTitle,
@@ -32,11 +36,13 @@ router.post("/nonembedded", (req, res) => {
   };
   hellosign.signatureRequest.send(options)
       .then(function(response) {
-        console.log("What is the response", response);
+        res.status(200).json(response)
       })
       .catch(function(error) {
         console.log(error);
+        res.status(404).end();
       });
+  router.post('/nonembedded/response/callbacks', upload.array(), callbacks);
   // signers.nonEmbeddedInfo(req.body)
   //   .then(user => {
   //     if (user)
@@ -44,5 +50,7 @@ router.post("/nonembedded", (req, res) => {
   //   })
   //   .catch(error => next(error));
 });
+
+// router.post('/nonembedded/response/callbacks', upload.array(), callbacks);
 
 module.exports = router;

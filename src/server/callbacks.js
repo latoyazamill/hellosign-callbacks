@@ -1,10 +1,10 @@
 const config = require("../../config.js");
+const crypto = require('crypto');
 
-export function callbacks (req, res, json) {
+const callbacks = function(req, res, json) {
   var data = req.body.json;
   data = JSON.parse(data);
   data = data.event;
-  console.log("What is the data?????----->", data);
   var apiKey = config.APIKEY;
   var calculate_hash = crypto.createHmac('sha256', apiKey).update(data.event_time + data.event_type).digest('hex').toString();
   var event_hash = data.event_hash;
@@ -14,3 +14,5 @@ export function callbacks (req, res, json) {
     res.status(404).end();
   }
 };
+
+module.exports = callbacks;

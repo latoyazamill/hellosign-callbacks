@@ -15,7 +15,6 @@ router.get("/nonembedded", (req, res) => {
 });
 
 router.post("/nonembedded", (req, res) => {
-  console.log("What is this?", req.body);
   const options = {
     test_mode: req.body.ufTestMode,
     title: req.body.ufTitle,

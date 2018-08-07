@@ -8,6 +8,8 @@ The app uses a simple file structure for an Express web app server that renders 
 ```sh
 public/               # static assets
 src/
+  models/            # database actions
+    db/                 # database schema, queries, and connections
   server/            # server actions (e.g. data CRUD)
     routes/             # express routes
   views/              # html templates
